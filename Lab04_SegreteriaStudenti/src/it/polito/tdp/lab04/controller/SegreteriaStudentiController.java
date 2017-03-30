@@ -49,9 +49,7 @@ public class SegreteriaStudentiController {
 	@FXML
 	private TextField txtCognome;
 
-	public void setModel(Model model) {
 
-	}
 
 	@FXML
 	void doReset(ActionEvent event) {
@@ -91,5 +89,8 @@ public class SegreteriaStudentiController {
 		assert txtMatricola != null : "fx:id=\"txtMatricola\" was not injected: check your FXML file 'SegreteriaStudenti.fxml'.";
 		assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'SegreteriaStudenti.fxml'.";
 	}
-
+	public void setModel(Model model) throws ClassNotFoundException {
+		this.model=model;
+		comboCorso.getItems().addAll(model.getTuttiICorsi());
+	}
 }

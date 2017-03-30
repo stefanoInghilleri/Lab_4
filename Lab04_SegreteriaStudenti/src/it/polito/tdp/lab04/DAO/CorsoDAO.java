@@ -16,12 +16,12 @@ public class CorsoDAO {
 	/*
 	 * Ottengo tutti i corsi salvati nel Db
 	 */
-	public List<Corso> getTuttiICorsi() {
+	public List<Corso> getTuttiICorsi() throws ClassNotFoundException {
 
 		final String sql = "SELECT * FROM corso";
 
 		List<Corso> corsi = new LinkedList<Corso>();
-
+		
 		try {
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);
@@ -30,8 +30,12 @@ public class CorsoDAO {
 
 			while (rs.next()) {
 
-				// Crea un nuovo JAVA Bean Corso
-				// Aggiungi il nuovo Corso alla lista
+				String codiceCorso=rs.getString("codins");
+				int crediti=rs.getInt("crediti");
+				String nomeCorso=rs.getString("nome");
+				int periodoDidattico=rs.getInt("pd");
+				Corso c=new Corso(codiceCorso, crediti, nomeCorso, periodoDidattico);
+				corsi.add(c);
 			}
 
 			return corsi;

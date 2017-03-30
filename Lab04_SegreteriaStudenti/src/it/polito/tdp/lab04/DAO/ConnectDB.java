@@ -14,8 +14,8 @@ public class ConnectDB {
 		try {
 			if (connection == null) {
 				Class.forName("com.mysql.jdbc.Driver");
-				connection = DriverManager.getConnection(jdbcUrl);
-				//connection =DriverManager.getConnection(jdbcUrl, "root", "");
+				//connection = DriverManager.getConnection(jdbcUrl);
+				connection =DriverManager.getConnection(jdbcUrl, "root", "");
 			}
 			return connection;
 
